@@ -38,10 +38,6 @@ void Log::LogError(std::string s,int code){
 
 void Log::LogError(std::wstring s,int code){
 	
-	dwWaitResult = WaitForSingleObject(outMutex,INFINITE);
-	switch(dwWaitResult){
-		//Thread got ownership
-	case WAIT_OBJECT_0:
 		out<<s.c_str()<<L" Error:"<<code<<endl; 
 		//Done reading, release mutex
 		if(!ReleaseMutex(outMutex))
